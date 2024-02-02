@@ -1,48 +1,31 @@
-import React from 'react';
-import './button.css';
+import { VariantProps, cva } from "class-variance-authority";
+import Text from "./Text";
 
-interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+const buttonStyles = cva(["p-4", "text-white"], {
+  variants: {
+    theme: {
+      primary: "bg-brand-400 hover:bg-brand-700",
+      inverse:
+        "border border-brand-500 bg-white text-brand-500 hover:bg-brand-500 hover:text-white",
+    },
+    rounded: {
+      xl: "rounded-xl",
+      lg: "rounded-lg",
+      sm: "rounded",
+      full: "rounded-full",
+    },
+  },
+});
+export type ButtonStylesProps = VariantProps<typeof buttonStyles>;
+
+export interface ButtonProps extends ButtonStylesProps {
+  content?: string;
 }
-
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
+const Button = ({ theme, rounded, content, ...props }: ButtonProps) => (
+  <button className={buttonStyles({ theme, rounded, ...props })}>
+    <Text size="medium" weight="light">
+      {content}
+    </Text>
+  </button>
+);
+export default Button;
