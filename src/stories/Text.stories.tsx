@@ -8,13 +8,23 @@ const meta = {
     size: "medium",
     weight: "light",
   },
-  tags:['autodocs']
+  argTypes: {
+    size: {
+      options: ["small", "medium", "large"],
+      control: { type: "select" },
+    },
+    weight: {
+      options: ["bold", "semibold", "light"],
+      control: { type: "select" },
+    },
+  },
+  tags: ["autodocs"],
 } as Meta<typeof Text>;
 
 export default meta;
 type TextStory = StoryObj<typeof meta>;
 
-export const SmallBold: TextStory = {
+export const Primary: TextStory = {
   render: ({ size, weight }: TextProps) => (
     <Text size={size} weight={weight}>
       {size + "/" + weight}
