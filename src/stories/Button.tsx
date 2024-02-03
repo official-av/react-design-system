@@ -4,7 +4,7 @@ import Text from "./Text";
 const buttonStyles = cva(["p-4", "text-white"], {
   variants: {
     theme: {
-      primary: "bg-brand-400 hover:bg-brand-700",
+      primary: "bg-red-400 hover:bg-red-700",
       inverse:
         "border border-brand-500 bg-white text-brand-500 hover:bg-brand-500 hover:text-white",
     },
