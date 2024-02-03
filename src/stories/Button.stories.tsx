@@ -1,6 +1,6 @@
+import { expect } from "@storybook/jest";
 import { StoryObj } from "@storybook/react";
 import { within } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
 import Button from "./Button";
 
 export default { component: Button };
@@ -34,15 +34,23 @@ export const PrimaryRounded: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const primaryButton = await canvas.getByRole("button");
-    // test background is brand-400
-    await expect(primaryButton.classList.toString()).toContain("bg-brand-400");
-    // test background is brand-700 on hover
-    await expect(primaryButton.classList.toString()).toContain(
-      "hover:bg-brand-700"
-    );
+
     // test button is rounded
     await expect(primaryButton.classList.toString()).toContain("rounded");
+    // test background is brand-400
+    await expect(primaryButton.classList.toString()).toContain("bg-brand-400");
   },
+};
+
+export const PrimaryOnHover: Story = {
+  ...PrimaryRounded,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const primaryButton = await canvas.getByRole("button");
+    // test background is brand-700 on hover
+    await expect(primaryButton).toHaveStyle("background-color: #002cff");
+  },
+  parameters: { pseudo: { hover: true } },
 };
 
 export const Inverse: Story = {
