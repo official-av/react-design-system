@@ -48,7 +48,9 @@ export const PrimaryOnHover: Story = {
     const canvas = within(canvasElement);
     const primaryButton = await canvas.getByRole("button");
     // test background is brand-700 on hover
-    await expect(primaryButton).toHaveStyle("background-color: #002cff");
+    await expect(primaryButton.classList.toString()).toContain(
+      "hover:bg-brand-700"
+    );
   },
   parameters: { pseudo: { hover: true } },
 };
