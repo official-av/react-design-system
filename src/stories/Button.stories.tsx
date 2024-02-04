@@ -28,7 +28,7 @@ export const Base: Story = {
 export const PrimaryRounded: Story = {
   args: {
     theme: "primary",
-    rounded: "sm",
+    rounded: "lg",
     content: "Primary Rounded Button",
   },
   play: async ({ canvasElement }) => {
@@ -36,9 +36,9 @@ export const PrimaryRounded: Story = {
     const primaryButton = await canvas.getByRole("button");
 
     // test button is rounded
-    await expect(primaryButton.classList.toString()).toContain("rounded");
+    await expect(primaryButton.classList.toString()).toContain("rounded-lg");
     // test background is brand-400
-    await expect(primaryButton.classList.toString()).toContain("bg-brand-400");
+    await expect(primaryButton.classList.toString()).toContain("bg-red-400");
   },
 };
 
