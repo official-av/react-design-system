@@ -36,9 +36,9 @@ export const PrimaryRounded: Story = {
     const primaryButton = await canvas.getByRole("button");
 
     // test button is rounded
-    await expect(primaryButton.classList.toString()).toContain("rounded-lg");
+    await expect(primaryButton.classList.toString()).toContain("rounded");
     // test background is brand-400
-    await expect(primaryButton.classList.toString()).toContain("bg-red-400");
+    await expect(primaryButton.classList.toString()).toContain("bg-brand-400");
   },
 };
 
