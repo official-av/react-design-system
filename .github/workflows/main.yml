@@ -25,7 +25,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.17.1'
-          cache: "npm"
+          cache: 'npm'
+          cache-dependency-path: './react-design-system/package-lock.json'
 
   # Run interaction and accessibility tests
   interaction-and-accessibility:
