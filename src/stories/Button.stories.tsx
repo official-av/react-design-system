@@ -28,7 +28,7 @@ export const Base: Story = {
 export const PrimaryRounded: Story = {
   args: {
     theme: "primary",
-    rounded: "lg",
+    rounded: "xl",
     content: "Primary Rounded Button",
   },
   play: async ({ canvasElement }) => {
