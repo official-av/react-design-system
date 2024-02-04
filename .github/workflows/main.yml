@@ -21,7 +21,7 @@ jobs:
       - name: Install Node Modules
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: '18.17.1'
           cache: "npm"
 
   # Run interaction and accessibility tests
