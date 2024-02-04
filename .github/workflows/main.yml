@@ -13,8 +13,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+      - name: Instal Playwright
+        run: npx playwright install --with-deps
       - name: Install Node Modules
-        run: npm install
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'npm'
+      
       - name: Test Storybook
         run: npm run storybook && npm run test-storybook
       - name: Publish to Chromatic
