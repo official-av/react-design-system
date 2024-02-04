@@ -10,8 +10,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test-storybook": "test-storybook",
-    "chromatic": "npx chromatic --project-token=chpt_faca259a1bd7078"
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
