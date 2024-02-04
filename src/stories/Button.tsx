@@ -1,10 +1,10 @@
 import { VariantProps, cva } from "class-variance-authority";
 import Text from "./Text";
 
-const buttonStyles = cva(["p-4", "text-white"], {
+const buttonStyles = cva(["p-4"], {
   variants: {
     theme: {
-      primary: "bg-brand-400 hover:bg-brand-700",
+      primary: "bg-brand-400 text-white hover:bg-brand-700",
       inverse:
         "border border-brand-500 bg-white text-brand-500 hover:bg-brand-500 hover:text-white",
     },
