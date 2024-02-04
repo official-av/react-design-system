@@ -3,6 +3,11 @@ on:
     branches:
       - master
     paths: ["src/stories/**"]
+  pull_request:
+    types:
+      - opened
+    branches:
+      - master
 name: Publish stories if changed
 
 jobs:
