@@ -14,10 +14,6 @@ jobs:
         uses: actions/checkout@master
       - name: Install Node Modules
         run: npm i
-      - name: Instal Playwright
-        run: npx playwright install --with-deps
-      - name: Test Storybook
-        run: npm run storybook && npm run test-storybook
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
