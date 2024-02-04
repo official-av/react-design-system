@@ -8,21 +8,38 @@ on:
 name: Publish stories if changed
 
 jobs:
-  build-and-deploy:
+  checkout-code:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Instal Playwright
-        run: npx playwright install --with-deps
+
+  # Run install dependencies and cache
+  install-and-cache:
+    runs-on: ubuntu-latest
+    needs: [checkout-code]
+    steps:
       - name: Install Node Modules
         uses: actions/setup-node@v4
         with:
           node-version: 16
-          cache: 'npm'
-      
+          cache: "npm"
+
+  # Run interaction and accessibility tests
+  interaction-and-accessibility:
+    runs-on: ubuntu-latest
+    needs: [install-and-cache]
+    steps:
+      - name: Instal Playwright
+        run: npx playwright install --with-deps
       - name: Test Storybook
         run: npm run storybook && npm run test-storybook
+
+  # Run visual and composition tests with Chromatic
+  visual-and-composition:
+    runs-on: ubuntu-latest
+    needs: [install-and-cache]
+    steps:
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
